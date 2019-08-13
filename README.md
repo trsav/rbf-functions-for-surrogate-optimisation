@@ -61,7 +61,7 @@ As a property of radial basis functions is that they are exactly accurate at eac
 In this implementation <a href="https://www.codecogs.com/eqnedit.php?latex=\Psi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Psi" title="\Psi" /></a> is calculated multiple times and the conditional number found over a logarithmic scale of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a>. Typically resulting in a graph such as the following:
 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/cond_num.png" width="400"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="400"> 
 </p>
 
 An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> value for the gaussian basis function can be approximately chosen as 'on the edge of ill-conditioning' or roughly where a condition number equals 10^12. Note that if you're thinking that this is a terrible way of choosing a hyperparameter then it absolutely is, it's mainly just as a tool to show what's gong on. There are more advanced methods that I will talk about later as well as in another repository (Kriging Interpolation). 
@@ -83,7 +83,7 @@ The following is a demonstration of how the Rosenbrock function can be interpola
 Then a graph of condition number against <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is produced and an appropriate value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is chosen: 
 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/cond_num.png" width="400"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="400"> 
 </p>
 This value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is then used to create the final interpolation matrix and corresponding weights. Resulting in the following approximation.
 
