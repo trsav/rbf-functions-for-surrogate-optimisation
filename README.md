@@ -79,7 +79,7 @@ Note that at low values of <a href="https://www.codecogs.com/eqnedit.php?latex=\
 
 The following is a demonstration of how the Rosenbrock function can be interpolated. Starting out with the original function and sampling 30 times, then choosing an appropriate value for <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> and finally plotting the final RBF approximation. 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="300"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="300"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="300"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="250"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="250"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="250"> 
 </p>
 
 
