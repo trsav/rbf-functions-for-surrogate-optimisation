@@ -64,7 +64,7 @@ In this implementation <a href="https://www.codecogs.com/eqnedit.php?latex=\Psi"
 <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="400"> 
 </p>
 
-An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> value for the gaussian basis function can be approximately chosen as 'on the edge of ill-conditioning' or roughly where a condition number equals 10^12. Note that if you're thinking that this is a terrible way of choosing a hyperparameter then it absolutely is, it's mainly just as a tool to show what's gong on. There are more advanced methods that I will talk about later as well as in another repository (Kriging Interpolation). 
+An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> value for the gaussian basis function can be approximately chosen as 'on the edge of ill-conditioning' or roughly where a condition number equals 10^12. Note that if you're thinking that this is a terrible way of choosing a hyperparameter then it absolutely is, it's mainly just as a tool to show what's giong on. There are more advanced methods that I will talk about later as well as in another repository (Kriging Interpolation). 
 
 ### Effect of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> on interpolation 
 
