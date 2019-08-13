@@ -69,6 +69,7 @@ An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"
 ### Effect of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> on interpolation 
 
 The following 1D and 2D interpolations provide an intuative look at how changing <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> effects the approximate function. Keeping in mind the higher the value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a>, the smaller the standard deviation of the gaussian basis function. 
+Note that at low values of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> instabilities occur due to the interpolation matrix being ill conditioned, producing 'noise'.
 
 <p align="center">
 <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RBFFunction1D.gif" width="400"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RBFFunction2D.gif" width="400"> 
@@ -76,19 +77,9 @@ The following 1D and 2D interpolations provide an intuative look at how changing
 
 ## Example 
 
-The following is a demonstration of how the Rosenbrock function can be interpolated. Starting out with the original function and sampling 30 times:
+The following is a demonstration of how the Rosenbrock function can be interpolated. Starting out with the original function and sampling 30 times, then choosing an appropriate value for <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> and finally plotting the final RBF approximation. 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="400"> 
-</p>
-Then a graph of condition number against <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is produced and an appropriate value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is chosen: 
-
-<p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="400"> 
-</p>
-This value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is then used to create the final interpolation matrix and corresponding weights. Resulting in the following approximation.
-
-<p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="400"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="300"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="300"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="300"> 
 </p>
 
 
