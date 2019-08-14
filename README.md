@@ -16,7 +16,7 @@ Our end goal is to produce a function that exactly predicts the correct result a
 </p>
 Bit complicated at first glance but all will be explained. 
 
-We start with a set of sample data that we wish to interpolate around along with each points respective function evaluation as follows:
+We start with a set of sample data that we wish to interpolate along with each point's respective function evaluation as follows:
 <p align="center"> 
 <a href="https://www.codecogs.com/eqnedit.php?latex=x_{data}=\begin{bmatrix}&space;x^1_1&&space;x^1_2&space;&&space;x_3^1&space;&...&space;&x^1_n\\&space;x^2_1&&space;x^2_2&space;&&space;x_3^2&space;&...&&space;x^2_n\\&space;x^3_1&x_2^3&space;&x^3_3&space;&&space;...&x^3_n\\&space;\vdots&&space;\vdots&space;&&space;\vdots&space;&&space;\ddots\\&space;x^p_1&x^p_2&x^p_3&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{data}=\begin{bmatrix}&space;x^1_1&&space;x^1_2&space;&&space;x_3^1&space;&...&space;&x^1_n\\&space;x^2_1&&space;x^2_2&space;&&space;x_3^2&space;&...&&space;x^2_n\\&space;x^3_1&x_2^3&space;&x^3_3&space;&&space;...&x^3_n\\&space;\vdots&&space;\vdots&space;&&space;\vdots&space;&&space;\ddots\\&space;x^p_1&x^p_2&x^p_3&space;\end{bmatrix}" title="x_{data}=\begin{bmatrix} x^1_1& x^1_2 & x_3^1 &... &x^1_n\\ x^2_1& x^2_2 & x_3^2 &...& x^2_n\\ x^3_1&x_2^3 &x^3_3 & ...&x^3_n\\ \vdots& \vdots & \vdots & \ddots\\ x^p_1&x^p_2&x^p_3 \end{bmatrix}" /></a> &nbsp &nbsp&nbsp&nbsp&nbsp
 <a href="https://www.codecogs.com/eqnedit.php?latex=y_{data}=&space;\begin{bmatrix}&space;y^1\\&space;y^2\\&space;y^3\\&space;\vdots\\&space;y^p\\&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{data}=&space;\begin{bmatrix}&space;y^1\\&space;y^2\\&space;y^3\\&space;\vdots\\&space;y^p\\&space;\end{bmatrix}" title="y_{data}= \begin{bmatrix} y^1\\ y^2\\ y^3\\ \vdots\\ y^p\\ \end{bmatrix}" /></a>
@@ -61,14 +61,15 @@ As a property of radial basis functions is that they are exactly accurate at eac
 In this implementation <a href="https://www.codecogs.com/eqnedit.php?latex=\Psi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Psi" title="\Psi" /></a> is calculated multiple times and the conditional number found over a logarithmic scale of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a>. Typically resulting in a graph such as the following:
 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/cond_num.png" width="400"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="400"> 
 </p>
 
-An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> value for the gaussian basis function can be approximately chosen as 'on the edge of ill-conditioning' or roughly where a condition number equals 10^12. Note that if you're thinking that this is a terrible way of choosing a hyperparameter then it absolutely is, it's mainly just as a tool to show what's gong on. There are more advanced methods that I will talk about later as well as in another repository (Kriging Interpolation). 
+An <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> value for the gaussian basis function can be approximately chosen as 'on the edge of ill-conditioning' or roughly where a condition number equals 10^12. Note that if you're thinking that this is a terrible way of choosing a hyperparameter then it absolutely is, it's mainly just as a tool to show what's giong on. There are more advanced methods that I will talk about later as well as in another repository (Kriging Interpolation). 
 
 ### Effect of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> on interpolation 
 
 The following 1D and 2D interpolations provide an intuative look at how changing <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> effects the approximate function. Keeping in mind the higher the value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a>, the smaller the standard deviation of the gaussian basis function. 
+Note that at low values of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> instabilities occur due to the interpolation matrix being ill conditioned, producing 'noise'.
 
 <p align="center">
 <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RBFFunction1D.gif" width="400"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RBFFunction2D.gif" width="400"> 
@@ -76,19 +77,9 @@ The following 1D and 2D interpolations provide an intuative look at how changing
 
 ## Example 
 
-The following is a demonstration of how the Rosenbrock function can be interpolated. Starting out with the original function and sampling 30 times:
+The following is a demonstration of how the Rosenbrock function can be interpolated. Starting out with the original function and sampling 30 times, then choosing an appropriate value for <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> and finally plotting the final RBF approximation. 
 <p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="400"> 
-</p>
-Then a graph of condition number against <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is produced and an appropriate value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is chosen: 
-
-<p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/cond_num.png" width="400"> 
-</p>
-This value of <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is then used to create the final interpolation matrix and corresponding weights. Resulting in the following approximation.
-
-<p align="center">
-<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="400"> 
+<img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Rosenbrock60.png" width="250"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/Cond_Num.png" width="250"> <img src="https://github.com/TomRSavage/RBF-Functions-For-Surrogate-Optimization/blob/master/RosenbrockRBF.png" width="250"> 
 </p>
 
 
